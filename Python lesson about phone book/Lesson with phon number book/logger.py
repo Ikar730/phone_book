@@ -20,11 +20,29 @@ def input_data():
         with open('data_1var.csv', 'a', encoding='utf-8') as f:
             f.write(f"{name}\n{surname}\n{phone}\n{address} \n\n")
     elif var == 2:
-         with open('data_1var.csv', 'a', encoding='utf-8') as f:
+         with open('data_2var.csv', 'a', encoding='utf-8') as f:
             f.write(f"{name};{surname};{phone};{address} \n\n")      
 
              
 def print_data():
-    pass
+    print('Вывожу данные из 1 файла: \n')
+    with open('data_1var.csv', 'r', encoding='utf-8') as f:
+        data_first = f.readlines()
+        data_first_list = []
+        j = 0
+        for i in range(len(data_first)):
+            if data_first[i] == '\n' or i == len(data_first)-1:
+                data_first_list.append(' '.join(data_first[j:i+1]))
+                j = i
+        print(''.join(data_first_list))      
 
-input_data()
+
+
+    print('Вывожу данные из 2 файла: \n')
+    with open('data_2var.csv', 'r', encoding='utf-8') as f:
+        data_second = f.readlines()
+        print(*data_second)        
+
+
+
+
